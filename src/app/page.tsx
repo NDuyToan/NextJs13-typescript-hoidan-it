@@ -4,10 +4,24 @@ import stylesApp from "@/styles/app.module.css";
 import stylesFace from "@/styles/face.module.css";
 import Link from "next/link";
 import AppTable from "@/components/app.table";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://localhost:8000/blogs");
+      const data = await res?.json();
+      console.log("data", data);
+    };
+    fetchData();
+  }, []);
   return (
-    <>
+    <div
+      style={{
+        height: "100vh",
+      }}
+      className="home"
+    >
       <ul>
         <li className={stylesApp.red}>
           <Link href="/facebook">
@@ -22,6 +36,6 @@ export default function Home() {
         </li>
       </ul>
       <AppTable />
-    </>
+    </div>
   );
 }
