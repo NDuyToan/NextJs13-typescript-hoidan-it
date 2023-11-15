@@ -1,12 +1,13 @@
-import Image from "next/image";
+"use client";
 
 import stylesApp from "@/styles/app.module.css";
 import stylesFace from "@/styles/face.module.css";
 import Link from "next/link";
+import AppTable from "@/components/app.table";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <ul>
         <li className={stylesApp.red}>
           <Link href="/facebook">
@@ -20,6 +21,7 @@ export default function Home() {
           <Link href="/tiktok">Tiktok</Link>
         </li>
       </ul>
-    </main>
+      <AppTable />
+    </>
   );
 }
