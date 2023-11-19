@@ -10,15 +10,6 @@ import useSWR from "swr";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function Home() {
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch("http://localhost:8000/blogs");
-  //     const data = await res?.json();
-  //     console.log("data", data);
-  //   };
-  //   fetchData();
-  // }, []);
-
   const { data, error, isLoading } = useSWR(
     "http://localhost:8000/blogs",
     fetcher,
@@ -28,7 +19,8 @@ export default function Home() {
       revalidateOnReconnect: false,
     }
   );
-  console.log("data", data);
+  // console.log("data", data);
+  if (!data) return <div>Loading....</div>;
   return (
     <div
       style={{
@@ -49,7 +41,7 @@ export default function Home() {
           <Link href="/tiktok">Tiktok</Link>
         </li>
       </ul>
-      <AppTable />
+      <AppTable blogs={data} />
     </div>
   );
 }
