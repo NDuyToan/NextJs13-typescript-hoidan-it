@@ -4,7 +4,6 @@ import stylesApp from "@/styles/app.module.css";
 import stylesFace from "@/styles/face.module.css";
 import Link from "next/link";
 import AppTable from "@/components/app.table";
-import { useEffect } from "react";
 import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
